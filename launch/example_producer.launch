@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<launch>
+    <!--- TODO SASL
+    <arg name="user" default="user"/>
+    <arg name="password" default="pw"/>
+    -->
+
+    <arg name="security_protocol" default="ssl"/>
+    <arg name="host" default="kafka.niecksch.com:9093"/>
+    <arg name="endpoint_identification" default="none"/>
+
+    <arg name="kafka_topic" default="chatter"/>
+
+    <node pkg="ros_kafka" type="example_producer" name="example_producer" output="screen">
+        <!--- these should be env vars MAYBE EVEN HARD CODED
+        <param name="user" value="$(arg user)"/>
+        <param name="password" value="$(arg password)"/>
+        -->
+        <param name="host" value="$(arg host)"/>
+        <param name="kafka_topic" value="$(arg kafka_topic)"/>
+        <param name="security_protocol" value="$(arg security_protocol)"/>
+        <param name="endpoint_identification" value="$(arg endpoint_identification)"/>
+        <param name="ca_cert" value="$(find ros_kafka)/certs/ca-cert"/>
+        <param name="client_cert" value="$(find ros_kafka)/certs/client.pem"/>
+        <param name="client_key" value="$(find ros_kafka)/certs/client.key"/>
+        <rosparam command="load" file="$(find ros_kafka)/config/producer.yaml" />
+            <!--- these should be env vars MAYBE EVEN HARD CODED -->
+        <param name="key_pw_var" value="CLIENT_PW"/>
+    </node>
+
+</launch>

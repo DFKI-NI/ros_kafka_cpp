@@ -1,0 +1,13 @@
+parameters: {
+            acks: "1",
+            message.max.bytes: "500000000",
+            queue.buffering.max.kbytes: "160000000000",
+            queue.buffering.max.messages: "10000000",
+            linger.ms: "80",
+            batch.num.messages: "16",
+            compression.type: "zstd",
+            compression.codec: "zstd",
+            compression.level: "3",
+            # 0 is infinite
+            message.timeout.ms: "0",
+       }

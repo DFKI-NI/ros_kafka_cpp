@@ -1,0 +1,9 @@
+certs/*
+.idea/*
+
+*.swp
+*.swo
+*.key
+*.pem
+*.req
+ca-cert
